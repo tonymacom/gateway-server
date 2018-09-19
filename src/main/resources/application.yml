@@ -1,0 +1,24 @@
+server:
+  port: 9703
+spring:
+  application:
+    name: gateway-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.61.46:8761/eureka/
+  instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    lease-renewal-interval-in-seconds: 2 #心跳间隔时间,默认是30秒
+    lease-expiration-duration-in-seconds: 6 #最后一次心跳时间后leaseExpirationDurationInSeconds秒就认为是下线了，默认是90秒
+
+zuul:
+  routes:
+    appone:
+      path: /one/**
+      serviceId: app-one
+#      url: http://192.168.61.46:9704/
+    apptwo:
+      path: /two/**
+      serviceId: app-two
+#      url: http://192.168.61.46:9705/
