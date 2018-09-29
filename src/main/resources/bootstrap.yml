@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    config:
+      fail-fast: true
+      uri: http://config-server:9706
+      username: user
+      password: ${CONFIG_LOGIN_PWD:12345}
+  profiles:
+    active: ${CONFIG_PROFILE:local}
+zuul:
+  routes:
+    appone:
+      path: /app-one/**
+      serviceId: app-one
+    apptwo:
+      path: /app-two/**
+      serviceId: app-two
+info:
+  app:
+    name: gateway-server # /info数据
+    version: 1.0
+management:
+  security:
+    enabled: false # 关闭安全校验,可以获取 /env /beans接口数据
