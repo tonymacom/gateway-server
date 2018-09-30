@@ -1,6 +1,6 @@
-server:
-  port: 8080
 spring:
+  profiles:
+    active: ${CONFIG_PROFILE:dev}
   application:
     name: gateway-server
   cloud:
@@ -9,8 +9,7 @@ spring:
       uri: http://config-server:9706
       username: user
       password: ${CONFIG_LOGIN_PWD:12345}
-  profiles:
-    active: ${CONFIG_PROFILE:local}
+
 zuul:
   routes:
     appone:
@@ -19,6 +18,9 @@ zuul:
     apptwo:
       path: /app-two/**
       serviceId: app-two
+server:
+  port: 8080
+
 info:
   app:
     name: gateway-server # /info数据
