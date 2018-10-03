@@ -8,7 +8,7 @@ services:
     volumes:
       - /home/log:/home/log
     ports:
-      - 8080:8080
+      - 9703:9703
 #    networks:
 #      - tonynet-a
     deploy:

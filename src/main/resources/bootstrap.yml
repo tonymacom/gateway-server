@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       fail-fast: true
-      uri: http://config-server:9706
+      uri: http://config-server:9701
       username: user
       password: ${CONFIG_LOGIN_PWD:12345}
 
@@ -19,7 +19,7 @@ zuul:
       path: /app-two/**
       serviceId: app-two
 server:
-  port: 8080
+  port: 9703
 
 info:
   app:
