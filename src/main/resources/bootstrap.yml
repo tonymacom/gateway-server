@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    active: ${CONFIG_PROFILE:dev}
   application:
     name: gateway-server
   cloud:
@@ -9,7 +7,7 @@ spring:
       uri: http://config-server:9701
       username: user
       password: ${CONFIG_LOGIN_PWD:12345}
-
+      profile: ${CONFIG_PROFILE:local}
 zuul:
   routes:
     appone:
